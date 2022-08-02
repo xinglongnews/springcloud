@@ -1,0 +1,34 @@
+server:
+  port: 9527
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: payment_routh
+#          uri: http://localhost:8001
+          uri: lb://CLOUD-PAYMENT-SERVICE
+          predicates:
+            - Path=/payment/byId/**
+
+        - id: payment_routh2
+#          uri: http://localhost:8001
+          uri: lb://CLOUD-PAYMENT-SERVICE
+          predicates:
+#            - Path=/payment/lb/**
+#            - Between=2022-07-31T15:52:34.076+08:00[Asia/Shanghai],2022-07-31T16:52:34.076+08:00[Asia/Shanghai]
+#            - Cookie=username,zzyy
+            - Header=X-Request-Id, \d+
+eureka:
+  instance:
+    hostname: cloud-gateway-service
+  client:
+    register-with-eureka: true  #表示不向注册中心注册自己
+    fetch-registry: true  #是否从eurekaServer抓取已有的注册信息，默认是true 单点无所谓 集群必须设置为true  配合ribbin使用实现负载均衡
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+#      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002
