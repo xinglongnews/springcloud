@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>cloud2022</artifactId>
-        <groupId>com.sxl.springcloud</groupId>
+        <groupId>springcloud</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -12,6 +12,11 @@
     <artifactId>cloud-config-center-3344</artifactId>
 
    <dependencies>
+       <dependency>
+           <groupId>org.springframework.cloud</groupId>
+           <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+           <version>3.1.2</version>
+       </dependency>
        <dependency>
            <groupId>org.springframework.cloud</groupId>
            <artifactId>spring-cloud-config-server</artifactId>
@@ -36,13 +41,6 @@
        </dependency>
 
 
-       <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools -->
-       <dependency>
-           <groupId>org.springframework.boot</groupId>
-           <artifactId>spring-boot-devtools</artifactId>
-           <scope>runtime</scope>
-           <optional>true</optional>
-       </dependency>
 
        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
        <dependency>

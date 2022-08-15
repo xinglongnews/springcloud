@@ -4,17 +4,31 @@ server:
 spring:
   application:
     name: cloud-config-center
-
-
   cloud:
     config:
       server:
         git:
-          uri:
+          uri: https://gitee.com/newly_born/springcloud-config.git
           search-paths:
             - springcloud-config
+          force-pull: true
+      #          username: xinglongnews
+#          password: rasSbE%f4zNFlmTS
       label: master
+  rabbitmq:
+    host: 121.43.169.252
+    port: 5673
+    username: guest
+    password: guest
+
+
 eureka:
   client:
     service-url:
-      defaultZone:
+      defaultZone: http://eureka7001.com:7001/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "bus-refresh"

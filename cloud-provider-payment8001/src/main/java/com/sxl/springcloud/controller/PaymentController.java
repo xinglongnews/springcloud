@@ -29,7 +29,7 @@ public class PaymentController {
     private PaymentService paymentService;
 
     @PostMapping("/payment/create")
-    public CommonResult  create(@RequestBody Payment payment){
+    public CommonResult create(@RequestBody Payment payment){
        log.info("======="+port+"==========="+payment);
 
         int i = paymentService.create(payment);
@@ -91,5 +91,14 @@ public class PaymentController {
             e.printStackTrace();
         }
         return port;
+    }
+
+    @GetMapping("/payment/zipkin")
+    public String  paymentZipkin(){
+
+
+        return "fjdjfds;jfds;dsfj";
+
+
     }
 }

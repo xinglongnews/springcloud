@@ -16,7 +16,6 @@ import org.springframework.web.client.RestTemplate;
 import javax.annotation.Resource;
 import java.net.URI;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 @RestController
 @Slf4j
@@ -37,7 +36,7 @@ public class OrderController {
 
 
     @PostMapping("/consumer/payment/creat")
-    public CommonResult<Payment>  create(Payment  payment){
+    public CommonResult<Payment> create(Payment  payment){
 
         log.info("================"+payment);
         return  restTemplate.postForObject(PATH_URL + "/payment/create", payment, CommonResult.class);
@@ -86,6 +85,12 @@ public class OrderController {
     }
 
 
+    @GetMapping("/consumer/payment/zipkip")
+    public String  paymentZipkin(){
+        String forObject = restTemplate.getForObject(PATH_URL + "/payment/zipkin", String.class);
+
+        return  forObject;
+    }
 
 
 }

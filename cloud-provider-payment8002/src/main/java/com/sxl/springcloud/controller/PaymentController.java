@@ -24,7 +24,7 @@ public class PaymentController {
     private PaymentService paymentService;
 
     @PostMapping("/payment/create")
-    public CommonResult  create(@RequestBody Payment payment){
+    public CommonResult create(@RequestBody Payment payment){
        log.info("======="+port+"=========="+payment);
        payment.setSerial("djfkdjfksd");
 
